@@ -1,0 +1,53 @@
+Сравнение работы MyLinkedList and LinkedList. Время выполнения операции приведено в нс.
+Добавление в начало.
+MyLinkedList: 16400
+LinkedList: 20900
+
+Добавление в конец.
+MyLinkedList: 10400
+LinkedList: 10700
+
+Добавление в середину:
+MyLinkedList: 91700
+LinkedList: 110900
+
+Поиск по индексу:
+Элемент в начале.
+MyLinkedList: 14500
+LinkedList: 13700
+
+Элемент в середине.
+MyLinkedList: 114300
+LinkedList: 148500
+
+Элемент в конце.
+MyLinkedList: 195200
+LinkedList: 17000
+
+Поиск по значению:
+Элемент в начале.
+MyLinkedList: 11800
+LinkedList: 9700
+
+Элемент в середине.
+MyLinkedList: 146000
+LinkedList: 190000
+
+Элемент в конце.
+MyLinkedList: 273600
+LinkedList: 493100
+
+Удаление элемента.
+Элемент в начале.
+MyLinkedList: 12100
+LinkedList: 16800
+
+Элемент в середине.
+MyLinkedList: 107700
+LinkedList: 138700
+
+Элемент в конце.
+MyLinkedList: 199100
+LinkedList: 16300
+
+Моя реализация коллекции значительно хуже отрабатывает в тех местах, где происходит всавка/поиск/удаление в(из) конца, т.к. цикл каждый раз сначала начинаю. Исправлю релизацию.
