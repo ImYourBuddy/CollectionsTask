@@ -21,21 +21,21 @@ public class Sets {
         System.out.println("Add test.");
         startOperation = System.nanoTime();
         for (int i = 0; i < 1000; i++) {
-            hashSet.add("test add");
+            hashSet.add("test add" + i);
         }
         endOperation = System.nanoTime();
         System.out.println("HashSet: " + (endOperation - startOperation));
 
         startOperation = System.nanoTime();
         for (int i = 0; i < 1000; i++) {
-            linkedHashSet.add("test add");
+            linkedHashSet.add("test add" + i);
         }
         endOperation = System.nanoTime();
         System.out.println("LinkedHashSet: " + (endOperation - startOperation));
 
         startOperation = System.nanoTime();
         for (int i = 0; i < 1000; i++) {
-            treeSet.add("test add");
+            treeSet.add("test add" + i);
         }
         endOperation = System.nanoTime();
         System.out.println("TreeSet: " + (endOperation - startOperation));
@@ -44,21 +44,21 @@ public class Sets {
         System.out.println("Search test.");
         startOperation = System.nanoTime();
         for (int i = 0; i < 1000; i++) {
-            hashSet.contains("test add");
+            hashSet.contains("test add" + i);
         }
         endOperation = System.nanoTime();
         System.out.println("HashSet: " + (endOperation - startOperation));
 
         startOperation = System.nanoTime();
         for (int i = 0; i < 1000; i++) {
-            linkedHashSet.contains("test add");
+            linkedHashSet.contains("test add" + i);
         }
         endOperation = System.nanoTime();
         System.out.println("LinkedHashSet: " + (endOperation - startOperation));
 
         startOperation = System.nanoTime();
         for (int i = 0; i < 1000; i++) {
-            treeSet.contains("test add");
+            treeSet.contains("test add" + i);
         }
         endOperation = System.nanoTime();
         System.out.println("TreeSet: " + (endOperation - startOperation));
@@ -67,21 +67,21 @@ public class Sets {
         System.out.println("Delete test.");
         startOperation = System.nanoTime();
         for (int i = 0; i < 1000; i++) {
-            hashSet.remove("test add");
+            hashSet.remove("test add" + i);
         }
         endOperation = System.nanoTime();
         System.out.println("HashSet: " + (endOperation - startOperation));
 
         startOperation = System.nanoTime();
         for (int i = 0; i < 1000; i++) {
-            linkedHashSet.remove("test add");
+            linkedHashSet.remove("test add" + i);
         }
         endOperation = System.nanoTime();
         System.out.println("LinkedHashSet: " + (endOperation - startOperation));
 
         startOperation = System.nanoTime();
         for (int i = 0; i < 1000; i++) {
-            treeSet.remove("test add");
+            treeSet.remove("test add" + i);
         }
         endOperation = System.nanoTime();
         System.out.println("TreeSet: " + (endOperation - startOperation));
