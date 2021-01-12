@@ -1,7 +1,5 @@
 package com.mycompany.mylist;
 
-import java.lang.reflect.Array;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
