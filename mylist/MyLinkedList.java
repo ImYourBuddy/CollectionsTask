@@ -177,16 +177,24 @@ public class MyLinkedList<DATA> implements ILinkedList<DATA> {
     }
 
     @Override
-    public DATA[] toArray() {
-        DATA[] result = (DATA[]) Array.newInstance(first.data.getClass(), size);
-        Node<DATA> slider = first;
+    public <E> E[] toArray(E[] array) {
+        if (array.length < size) {
+            array = (E[]) java.lang.reflect.Array.newInstance(array.getClass().getComponentType(), size);
+        }
+        Object[] result = array;
         int index = 0;
+        Node<DATA> slider = first;
         while (slider != null) {
             result[index] = slider.data;
             slider = slider.nextNode;
             index++;
         }
-        return result;
+
+        if (array.length > size) {
+            array[size] = null;
+        }
+
+        return array;
     }
 
     @Override
