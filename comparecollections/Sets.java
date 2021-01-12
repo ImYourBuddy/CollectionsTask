@@ -4,6 +4,7 @@ import com.mycompany.firsttask.shapes.Circle;
 
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.TreeSet;
 
 public class Sets {
@@ -11,80 +12,58 @@ public class Sets {
         HashSet<String> hashSet = new HashSet<>();
         LinkedHashSet<String> linkedHashSet = new LinkedHashSet<>();
         TreeSet<String> treeSet = new TreeSet<>();
-        long startOperation;
-        long endOperation;
         for (int i = 0; i < 100000; i++) {
             hashSet.add("element" + i);
             linkedHashSet.add("element" + i);
             treeSet.add("element" + i);
         }
         System.out.println("Add test.");
-        startOperation = System.nanoTime();
-        for (int i = 0; i < 1000; i++) {
-            hashSet.add("test add" + i);
-        }
-        endOperation = System.nanoTime();
-        System.out.println("HashSet: " + (endOperation - startOperation));
-
-        startOperation = System.nanoTime();
-        for (int i = 0; i < 1000; i++) {
-            linkedHashSet.add("test add" + i);
-        }
-        endOperation = System.nanoTime();
-        System.out.println("LinkedHashSet: " + (endOperation - startOperation));
-
-        startOperation = System.nanoTime();
-        for (int i = 0; i < 1000; i++) {
-            treeSet.add("test add" + i);
-        }
-        endOperation = System.nanoTime();
-        System.out.println("TreeSet: " + (endOperation - startOperation));
+        addTest(hashSet);
+        addTest(linkedHashSet);
+        addTest(treeSet);
         System.out.println();
 
         System.out.println("Search test.");
-        startOperation = System.nanoTime();
-        for (int i = 0; i < 1000; i++) {
-            hashSet.contains("test add" + i);
-        }
-        endOperation = System.nanoTime();
-        System.out.println("HashSet: " + (endOperation - startOperation));
-
-        startOperation = System.nanoTime();
-        for (int i = 0; i < 1000; i++) {
-            linkedHashSet.contains("test add" + i);
-        }
-        endOperation = System.nanoTime();
-        System.out.println("LinkedHashSet: " + (endOperation - startOperation));
-
-        startOperation = System.nanoTime();
-        for (int i = 0; i < 1000; i++) {
-            treeSet.contains("test add" + i);
-        }
-        endOperation = System.nanoTime();
-        System.out.println("TreeSet: " + (endOperation - startOperation));
+        searchTest(hashSet);
+        searchTest(linkedHashSet);
+        searchTest(treeSet);
         System.out.println();
 
         System.out.println("Delete test.");
-        startOperation = System.nanoTime();
-        for (int i = 0; i < 1000; i++) {
-            hashSet.remove("test add" + i);
-        }
-        endOperation = System.nanoTime();
-        System.out.println("HashSet: " + (endOperation - startOperation));
+        deleteTest(hashSet);
+        deleteTest(linkedHashSet);
+        deleteTest(treeSet);
 
-        startOperation = System.nanoTime();
-        for (int i = 0; i < 1000; i++) {
-            linkedHashSet.remove("test add" + i);
-        }
-        endOperation = System.nanoTime();
-        System.out.println("LinkedHashSet: " + (endOperation - startOperation));
+    }
 
+    private static void addTest (Set set) {
+        long startOperation = 0;
+        long endOperation = 0;
         startOperation = System.nanoTime();
         for (int i = 0; i < 1000; i++) {
-            treeSet.remove("test add" + i);
+            set.add("test add" + i);
         }
         endOperation = System.nanoTime();
-        System.out.println("TreeSet: " + (endOperation - startOperation));
-        System.out.println();
+        System.out.println(set.getClass().getSimpleName() + ": " + (endOperation - startOperation));
+    }
+    private static void deleteTest (Set set) {
+        long startOperation = 0;
+        long endOperation = 0;
+        startOperation = System.nanoTime();
+        for (int i = 0; i < 1000; i++) {
+            set.remove("element" + i);
+        }
+        endOperation = System.nanoTime();
+        System.out.println(set.getClass().getSimpleName() + ": " + (endOperation - startOperation));
+    }
+    private static void searchTest (Set set) {
+        long startOperation = 0;
+        long endOperation = 0;
+        startOperation = System.nanoTime();
+        for (int i = 0; i < 1000; i++) {
+            set.contains("element" + i);
+        }
+        endOperation = System.nanoTime();
+        System.out.println(set.getClass().getSimpleName() + ": " + (endOperation - startOperation));
     }
 }
