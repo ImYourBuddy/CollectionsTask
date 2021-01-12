@@ -2,6 +2,7 @@ package com.mycompany.comparecollections;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.TreeMap;
 
 public class Maps {
@@ -18,95 +19,71 @@ public class Maps {
         }
 
         System.out.println("Add test.");
-        startOperation = System.nanoTime();
-        for (int i = 0; i < 1000; i++) {
-            hashMap.put(hashMap.size() + i, "test add");
-        }
-        endOperation = System.nanoTime();
-        System.out.println("HashMap: " + (endOperation - startOperation));
-
-        startOperation = System.nanoTime();
-        for (int i = 0; i < 1000; i++) {
-            linkedHashMap.put(linkedHashMap.size() + i, "test add");
-        }
-        endOperation = System.nanoTime();
-        System.out.println("LinkedHashMap: " + (endOperation - startOperation));
-
-        startOperation = System.nanoTime();
-        for (int i = 0; i < 1000; i++) {
-            treeMap.put(treeMap.size() + i, "test add");
-        }
-        endOperation = System.nanoTime();
-        System.out.println("TreeMap: " + (endOperation - startOperation));
+        addTest(hashMap);
+        addTest(linkedHashMap);
+        addTest(treeMap);
         System.out.println();
 
         System.out.println("Search key test.");
-        startOperation = System.nanoTime();
-        for (int i = 4000; i < 5000; i++) {
-            hashMap.containsKey(i);
-        }
-        endOperation = System.nanoTime();
-        System.out.println("HashMap: " + (endOperation - startOperation));
-
-        startOperation = System.nanoTime();
-        for (int i = 4000; i < 5000; i++) {
-            linkedHashMap.containsKey(i);
-        }
-        endOperation = System.nanoTime();
-        System.out.println("LinkedHashMap: " + (endOperation - startOperation));
-
-        startOperation = System.nanoTime();
-        for (int i = 4000; i < 5000; i++) {
-            treeMap.containsKey(i);
-        }
-        endOperation = System.nanoTime();
-        System.out.println("TreeMap: " + (endOperation - startOperation));
+        searchKeyTest(hashMap);
+        searchKeyTest(linkedHashMap);
+        searchKeyTest(treeMap);
         System.out.println();
 
         System.out.println("Search value test.");
-        startOperation = System.nanoTime();
-        for (int i = 4000; i < 5000; i++) {
-            hashMap.containsValue("element" + i);
-        }
-        endOperation = System.nanoTime();
-        System.out.println("HashMap: " + (endOperation - startOperation));
-
-        startOperation = System.nanoTime();
-        for (int i = 4000; i < 5000; i++) {
-            linkedHashMap.containsValue("element" + i);
-        }
-        endOperation = System.nanoTime();
-        System.out.println("LinkedHashMap: " + (endOperation - startOperation));
-
-        startOperation = System.nanoTime();
-        for (int i = 4000; i < 5000; i++) {
-            treeMap.containsValue("element" + i);
-        }
-        endOperation = System.nanoTime();
-        System.out.println("TreeMap: " + (endOperation - startOperation));
+        searchValueTest(hashMap);
+        searchValueTest(linkedHashMap);
+        searchValueTest(treeMap);
         System.out.println();
 
         System.out.println("Delete test.");
-        startOperation = System.nanoTime();
-        for (int i = 4000; i < 5000; i++) {
-            hashMap.remove(i);
-        }
-        endOperation = System.nanoTime();
-        System.out.println("HashMap: " + (endOperation - startOperation));
-
-        startOperation = System.nanoTime();
-        for (int i = 4000; i < 5000; i++) {
-            linkedHashMap.remove(i);
-        }
-        endOperation = System.nanoTime();
-        System.out.println("LinkedHashMap: " + (endOperation - startOperation));
-
-        startOperation = System.nanoTime();
-        for (int i = 4000; i < 5000; i++) {
-            treeMap.remove(i);
-        }
-        endOperation = System.nanoTime();
-        System.out.println("TreeMap: " + (endOperation - startOperation));
+        deleteTest(hashMap);
+        deleteTest(linkedHashMap);
+        deleteTest(treeMap);
         System.out.println();
+    }
+
+    public static void addTest(Map map) {
+        long startOperation = 0;
+        long endOperation = 0;
+        startOperation = System.nanoTime();
+        for (int i = 0; i < 1000; i++) {
+            map.put(map.size() + i, "test add");
+        }
+        endOperation = System.nanoTime();
+        System.out.println(map.getClass().getSimpleName() + ": " + (endOperation - startOperation));
+    }
+
+    public static void searchKeyTest(Map map) {
+        long startOperation = 0;
+        long endOperation = 0;
+        startOperation = System.nanoTime();
+        for (int i = 4000; i < 5000; i++) {
+            map.containsKey(i);
+        }
+        endOperation = System.nanoTime();
+        System.out.println(map.getClass().getSimpleName() + ": " + (endOperation - startOperation));
+    }
+
+    public static void searchValueTest(Map map) {
+        long startOperation = 0;
+        long endOperation = 0;
+        startOperation = System.nanoTime();
+        for (int i = 4000; i < 5000; i++) {
+            map.containsValue("element" + i);
+        }
+        endOperation = System.nanoTime();
+        System.out.println(map.getClass().getSimpleName() + ": " + (endOperation - startOperation));
+    }
+
+    public static void deleteTest(Map map) {
+        long startOperation = 0;
+        long endOperation = 0;
+        startOperation = System.nanoTime();
+        for (int i = 4000; i < 5000; i++) {
+            map.remove(i);
+        }
+        endOperation = System.nanoTime();
+        System.out.println(map.getClass().getSimpleName() + ": " + (endOperation - startOperation));
     }
 }
