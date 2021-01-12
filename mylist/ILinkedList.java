@@ -61,7 +61,7 @@ public interface ILinkedList<E> extends Iterable<E> {
      * Returns an array containing all of the elements in this list in proper sequence.
      * @return an array containing all of the elements in this list in proper sequence.
      */
-    E[] toArray();
+    <E> E[] toArray(E[] array);
 
     @Override
     String toString();
