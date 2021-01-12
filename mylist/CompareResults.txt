@@ -1,53 +1,45 @@
 Сравнение работы MyLinkedList and LinkedList. Время выполнения операции приведено в нс.
-Добавление в начало.
-MyLinkedList: 16400
-LinkedList: 20900
 
-Добавление в конец.
-MyLinkedList: 10400
-LinkedList: 10700
 
-Добавление в середину:
-MyLinkedList: 91700
-LinkedList: 110900
+Add first.
+MyLinkedList: 340600
+LinkedList:  1117600
 
-Поиск по индексу:
-Элемент в начале.
-MyLinkedList: 14500
-LinkedList: 13700
+Add in the middle
+MyLinkedList: 36122600
+LinkedList:   37258500
 
-Элемент в середине.
-MyLinkedList: 114300
-LinkedList: 148500
+Add last.
+MyLinkedList: 356800
+LinkedList:   329200
 
-Элемент в конце.
-MyLinkedList: 195200
-LinkedList: 17000
+Search by index first element
+MyLinkedList: 543900
+LinkedList:   919600
 
-Поиск по значению:
-Элемент в начале.
-MyLinkedList: 11800
-LinkedList: 9700
+Search by index middle element
+MyLinkedList: 35565300
+LinkedList:   43413100
 
-Элемент в середине.
-MyLinkedList: 146000
-LinkedList: 190000
+Search by index last element
+MyLinkedList: 144862300
+LinkedList:       62800
 
-Элемент в конце.
-MyLinkedList: 273600
-LinkedList: 493100
+Search by value
+MyLinkedList: 114600
+LinkedList:   157700
 
-Удаление элемента.
-Элемент в начале.
-MyLinkedList: 12100
-LinkedList: 16800
 
-Элемент в середине.
-MyLinkedList: 107700
-LinkedList: 138700
+Delete from first position
+MyLinkedList: 296000
+LinkedList:   606500
 
-Элемент в конце.
-MyLinkedList: 199100
-LinkedList: 16300
+Delete from middle position
+MyLinkedList: 45551900
+LinkedList:   33717500
 
-Моя реализация коллекции значительно хуже отрабатывает в тех местах, где происходит всавка/поиск/удаление в(из) конца, т.к. цикл каждый раз сначала начинаю. Исправлю релизацию.
+Delete from last position
+MyLinkedList: 159922800
+LinkedList:     1036800
+
+Моя реализация коллекции значительно хуже отрабатывает в тех местах, где происходит всавка/поиск/удаление в(из) конца, т.к. цикл,чтобы найти нужный элемент каждый раз сначала начинаю. Исправлю релизацию. В остальных случаю коллекция работает либо на одном уровне с LinkedList, либо быстрее.
