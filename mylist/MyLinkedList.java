@@ -3,17 +3,17 @@ package com.mycompany.mylist;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class MyLinkedList<DATA> implements ILinkedList<DATA> {
+public class MyLinkedList<E> implements ILinkedList<E> {
     private int size = 0;
-    private Node<DATA> first;
-    private Node<DATA> last;
+    private Node<E> first;
+    private Node<E> last;
 
     /**
      * Inserts the specified element at the beginning of this list.
      *
      * @param element the element to add
      */
-    public void addFirst(DATA element) {
+    public void addFirst(E element) {
         if (first == null) {
             first = new Node<>(element, null);
             last = first;
@@ -29,12 +29,12 @@ public class MyLinkedList<DATA> implements ILinkedList<DATA> {
      * @param element element to be appended to this list
      */
     @Override
-    public void add(DATA element) {
+    public void add(E element) {
         if (last == null) {
             last = new Node<>(element, null);
             first = last;
         } else {
-            Node<DATA> newNode = new Node<>(element, null);
+            Node<E> newNode = new Node<>(element, null);
             last.nextNode = newNode;
             last = newNode;
         }
@@ -49,7 +49,7 @@ public class MyLinkedList<DATA> implements ILinkedList<DATA> {
      * @param element element to be inserted
      */
     @Override
-    public void add(int index, DATA element) {
+    public void add(int index, E element) {
         checkIndex(index);
         if (index == size) {
             add(element);
@@ -58,7 +58,7 @@ public class MyLinkedList<DATA> implements ILinkedList<DATA> {
             addFirst(element);
             return;
         } else {
-            Node<DATA> slider = first;
+            Node<E> slider = first;
             for (int i = 1; i < index; i++) {
                 slider = slider.nextNode;
             }
@@ -67,13 +67,13 @@ public class MyLinkedList<DATA> implements ILinkedList<DATA> {
         size++;
     }
 
-    public DATA getFirst() {
+    public E getFirst() {
         if (first == null) {
             throw new NoSuchElementException("List is empty");
         }
         return first.data;
     }
-    public DATA getLast() {
+    public E getLast() {
         if (last == null) {
             throw new NoSuchElementException("List is empty");
         }
@@ -82,9 +82,9 @@ public class MyLinkedList<DATA> implements ILinkedList<DATA> {
 
     @Override
     public void clear() {
-        Node<DATA> cleaner = first;
+        Node<E> cleaner = first;
         while (cleaner != null) {
-            Node<DATA> next = cleaner.nextNode;
+            Node<E> next = cleaner.nextNode;
             cleaner.data = null;
             cleaner.nextNode = null;
             cleaner = next;
@@ -95,9 +95,9 @@ public class MyLinkedList<DATA> implements ILinkedList<DATA> {
     }
 
     @Override
-    public DATA get(int index) {
+    public E get(int index) {
         checkIndexGet(index);
-        Node<DATA> slider = first;
+        Node<E> slider = first;
         for (int i = 0; i < index; i++) {
             slider = slider.nextNode;
         }
@@ -105,9 +105,9 @@ public class MyLinkedList<DATA> implements ILinkedList<DATA> {
     }
 
     @Override
-    public int indexOf(DATA element) {
+    public int indexOf(E element) {
         int index = 0;
-        Node<DATA> slider = first;
+        Node<E> slider = first;
         if (element == null) {
             while (slider != null) {
                 if (slider.data == null) {
@@ -129,10 +129,10 @@ public class MyLinkedList<DATA> implements ILinkedList<DATA> {
     }
 
     @Override
-    public DATA remove(int index) {
+    public E remove(int index) {
         checkIndexGet(index);
-        Node<DATA> slider = first;
-        DATA data = slider.data;
+        Node<E> slider = first;
+        E data = slider.data;
         if (index == 0) {
             first = slider.nextNode;
             size--;
@@ -158,13 +158,13 @@ public class MyLinkedList<DATA> implements ILinkedList<DATA> {
     }
 
     @Override
-    public DATA set(int index, DATA element) {
+    public E set(int index, E element) {
         checkIndexGet(index);
-        Node<DATA> slider = first;
+        Node<E> slider = first;
         for (int i = 0; i < index; i++) {
             slider = slider.nextNode;
         }
-        DATA data = slider.data;
+        E data = slider.data;
         slider.data = element;
         return data;
     }
@@ -175,13 +175,13 @@ public class MyLinkedList<DATA> implements ILinkedList<DATA> {
     }
 
     @Override
-    public <E> E[] toArray(E[] array) {
+    public <T> T[] toArray(T[] array) {
         if (array.length < size) {
-            array = (E[]) java.lang.reflect.Array.newInstance(array.getClass().getComponentType(), size);
+            array = (T[]) java.lang.reflect.Array.newInstance(array.getClass().getComponentType(), size);
         }
         Object[] result = array;
         int index = 0;
-        Node<DATA> slider = first;
+        Node<E> slider = first;
         while (slider != null) {
             result[index] = slider.data;
             slider = slider.nextNode;
@@ -197,14 +197,14 @@ public class MyLinkedList<DATA> implements ILinkedList<DATA> {
 
     @Override
     public String toString() {
-        Iterator<DATA> it = iterator();
+        Iterator<E> it = iterator();
         if (! it.hasNext())
             return "[]";
 
         StringBuilder sb = new StringBuilder();
         sb.append('[');
         for (;;) {
-            DATA e = it.next();
+            E e = it.next();
             sb.append(e == this ? "(this Collection)" : e);
             if (! it.hasNext())
                 return sb.append(']').toString();
@@ -213,10 +213,10 @@ public class MyLinkedList<DATA> implements ILinkedList<DATA> {
     }
 
     @Override
-    public Iterator<DATA> iterator() {
-        Iterator<DATA> MyLinkedListIterator = new Iterator<>() {
-            private Node<DATA> current = null;
-            private Node<DATA> prev = null;
+    public Iterator<E> iterator() {
+        Iterator<E> MyLinkedListIterator = new Iterator<>() {
+            private Node<E> current = null;
+            private Node<E> prev = null;
             private int currentIndex = -1;
             @Override
             public boolean hasNext() {
@@ -224,7 +224,7 @@ public class MyLinkedList<DATA> implements ILinkedList<DATA> {
             }
 
             @Override
-            public DATA next() {
+            public E next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException("Going outside the list");
                 }
@@ -265,11 +265,11 @@ public class MyLinkedList<DATA> implements ILinkedList<DATA> {
             throw new IndexOutOfBoundsException("Index should be >= 0 and < size");
     }
 
-    private static class Node<DATA> {
-        private DATA data;
-        private Node<DATA> nextNode;
+    private static class Node<E> {
+        private E data;
+        private Node<E> nextNode;
 
-        public Node(DATA data, Node<DATA> nextNode) {
+        public Node(E data, Node<E> nextNode) {
             this.data = data;
             this.nextNode = nextNode;
         }
